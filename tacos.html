@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#723700",
+                    "tertiary-fixed-dim": "#77d4e1",
+                    "primary": "#b90027",
+                    "secondary-fixed": "#ffdcc6",
+                    "on-surface": "#291716",
+                    "primary-container": "#e31837",
+                    "on-tertiary-fixed": "#001f23",
+                    "secondary-container": "#fd8100",
+                    "surface-container-high": "#ffe1e0",
+                    "on-primary-fixed": "#410007",
+                    "on-surface-variant": "#5d3f3e",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#004f57",
+                    "tertiary-fixed": "#93f1fe",
+                    "on-tertiary-container": "#f2fdff",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#291716",
+                    "secondary-fixed-dim": "#ffb785",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#fffaf9",
+                    "tertiary-container": "#00808c",
+                    "inverse-surface": "#402b2b",
+                    "surface-container-highest": "#fcdbd9",
+                    "on-secondary-fixed": "#301400",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#954a00",
+                    "surface": "#fff8f7",
+                    "on-error-container": "#93000a",
+                    "outline-variant": "#e6bdbb",
+                    "primary-fixed-dim": "#ffb3b1",
+                    "on-primary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "background": "#fff8f7",
+                    "surface-container": "#ffe9e8",
+                    "surface-dim": "#f3d2d1",
+                    "inverse-on-surface": "#ffedeb",
+                    "inverse-primary": "#ffb3b1",
+                    "outline": "#916e6d",
+                    "tertiary": "#00656f",
+                    "on-primary-fixed-variant": "#92001d",
+                    "primary-fixed": "#ffdad8",
+                    "surface-variant": "#fcdbd9",
+                    "surface-bright": "#fff8f7",
+                    "surface-tint": "#bf0029",
+                    "on-secondary-container": "#5d2c00",
+                    "surface-container-low": "#fff0ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "40px",
+                    "stack-lg": "24px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "container-margin": "20px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "label-bold": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"]
+            },
+            "fontSize": {
+                    "headline-xl": ["36px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "label-bold": ["14px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-shadow-glow {
+            text-shadow: 0 0 20px rgba(227, 24, 55, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex flex-col overflow-x-hidden">
+<header class="bg-[#FFF9F0] dark:bg-gray-900 shadow-sm border-b border-gray-100 dark:border-gray-800 flex justify-between items-center px-5 h-16 w-full docked full-width top-0 z-50 fixed">
+<div class="flex items-center gap-4">
+<button class="transition-transform active:scale-95 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-full">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-xl font-black text-[#E31837] uppercase tracking-tighter font-['Plus_Jakarta_Sans']">
+                El Algoritmo del Sabor
+            </h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden border-2 border-primary-container">
+<img alt="User profile photo" data-alt="A professional studio portrait of a friendly young adult for a user profile avatar. The lighting is soft and warm, reflecting a high-end light-mode UI aesthetic. The background is a clean, neutral off-white consistent with the warm branding palette. The image is crisp, modern, and conveys a sense of approachable technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnVN_cJ6WxnH9LsrWdsO1Ft4AGoW3zYM64Im8fYO2Q5rZMbGc1tw1WJ0vkV_KeAdTHNtDAjwpELHanDFU_QuMQkRBeDuSlcNn2hkruInHIcZnELCisbIGeC55ipRUQY_8heBi5i1PyiWYkWb9oGoBHmZUrk2gWuy6zj0Fbe0GZi9IF4pgbLEb6MDXak08kB-DfmiowTw9tPpb5LZwz3otfE2d7eNnf5flDdH7xx5qQRGbHuTiOsXvX6iBWqnkqLCTj7CR-Vqjzs5Rc"/>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-32 px-container-margin max-w-md mx-auto w-full">
+<div class="relative mb-stack-lg">
+<div class="absolute -top-6 -left-4 z-0 opacity-10">
+<span class="material-symbols-outlined text-[120px] text-primary rotate-12">restaurant_menu</span>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl overflow-hidden shadow-lg relative z-10 border border-surface-container-high">
+<div class="h-72 w-full relative">
+<img alt="Al Pastor Tacos" class="w-full h-full object-cover" data-alt="A vibrant, mouth-watering close-up of three Al Pastor tacos served on artisanal corn tortillas. The meat is perfectly charred and glistening with marinade, topped with bright green cilantro, finely diced white onion, and juicy roasted pineapple chunks. The lighting is bright and festive, emphasizing rich textures and saturated colors like deep red and lime green against a warm cream background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2eaKsWFV5acdlt91TYfMmWK0TJ4PrdAQ2HpYdblPGCJwLeQvEUIND2IwerQgtm3uDZH8C4wh_vtT-GTa14JV1AktrvMET1trD9kDXmZZCcxtu63ot79wwPAz7oHlvWCcVIzctUgNvnNTSlstiT99atFE0RzqjgEfoi6bdpxhdWophfaxToYecPfRGtnKywHH46fy4TQ2l-OQUD1Igj4Qau0eW8el5xo2-W-0Ef93bnC2LxOL8Eus4Z_RY5ypbguiFWIXU-OGfZSQV"/>
+<div class="absolute top-4 right-4 bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-label-bold flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>FAVORITO</span>
+</div>
+</div>
+<div class="p-stack-lg text-center">
+<div class="inline-flex items-center justify-center bg-secondary-container/10 text-secondary px-4 py-1 rounded-full font-label-sm mb-stack-sm">
+                        RESULTADO DEL ALGORITMO
+                    </div>
+<h2 class="font-headline-lg text-on-surface mb-stack-sm text-shadow-glow">
+                        ¡Tu Taco Ideal es: <span class="text-primary">Al Pastor!</span>
+</h2>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        Con piña, cilantro y cebolla. Un clásico que nunca falla, equilibrando el dulzor frutal con el picante ahumado del achiote.
+                    </p>
+</div>
+</div>
+</div>
+<div class="space-y-stack-md">
+<div class="bg-surface-container p-stack-md rounded-2xl flex items-center gap-4 border border-outline-variant/30">
+<div class="bg-primary-container text-on-primary-container w-12 h-12 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<h4 class="font-label-bold text-on-surface">Nivel de Picante: Medio</h4>
+<p class="text-label-sm text-on-surface-variant">Salsa roja de chile de árbol incluida.</p>
+</div>
+</div>
+<button class="w-full bg-tertiary-container text-on-tertiary-container h-14 rounded-full font-headline-md shadow-lg transition-all duration-300 active:scale-95 flex items-center justify-center gap-3">
+<span class="material-symbols-outlined">shopping_cart</span>
+                Pedir ahora
+            </button>
+<button class="w-full h-14 rounded-full font-label-bold text-on-surface-variant flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">refresh</span>
+                Reiniciar el test
+            </button>
+</div>
+<div class="mt-section-gap">
+<h3 class="font-headline-md mb-stack-md text-center">Maridaje sugerido</h3>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="bg-surface-container-lowest p-stack-sm rounded-2xl shadow-sm border border-surface-container-high text-center">
+<img alt="Agua de Horchata" class="w-full h-24 object-cover rounded-xl mb-2" data-alt="A refreshing glass of Horchata, a Mexican rice milk drink, garnished with a sprinkle of cinnamon on top. The drink is served in a traditional glass with condensation, set against a warm, sun-drenched taqueria background. The style is bright, clean, and highlights the creamy texture of the drink." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH49aIBWCHES5T0rsWaZzoZzE0qvMntkze7yoT6Jn6uV4ldMX1BKhMdJnCpreZlJivym7S65eFhb0fJ_bJ_nebQuWcBhg5led-LLo5xaqO8pdbhyeDy8_NMWaWkw7qndF3IZe8TkHnmJtVyFhatzaj9mjTEUU-Eq2LGKfbOtz1CnVnYrt8_7qu32sw2yXYGNfpBQOVNUazylJ3tAglyF33Y2mFkSg5lKn0vQkjCM149jOlpYfzZacOdaesyqOsPHVRc0QOCufdR0eW"/>
+<p class="font-label-bold">Agua de Horchata</p>
+</div>
+<div class="bg-surface-container-lowest p-stack-sm rounded-2xl shadow-sm border border-surface-container-high text-center">
+<img alt="Limonada con Menta" class="w-full h-24 object-cover rounded-xl mb-2" data-alt="A cold glass of lime juice with mint leaves, known as Agua de Limón con Menta. The drink is vibrant green and translucent, with ice cubes visible. The lighting is crisp and refreshing, set in a modern, high-contrast light-mode setting with vibrant primary color accents nearby." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpzwgar3Qk6tgnw0IXYYeNNOKOWHd7llP2Bij9j3WCDNB-GWZf7c83Uqyq5-hGXMPvCND3EyfvwpMaZe2z82BQ6fleubXfjNH_1n3EZqjPVedXj4gt041lWHpBgBRSvGUms2oJlDwiV37Bq1dP9mONs2NRh-2NCAzAWSc7MOmdD6scroRkwfZ-5QhvfvpAf2SifPnijlMf-EpnBMa_YqHUyLzalPy2XJGH-P1Bb9WZOaZGWIybgcwgKrzk_oC4-sG4g6_JXqxZRdrg"/>
+<p class="font-label-bold">Limonada Menta</p>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full z-50 border-t border-gray-100 dark:border-gray-800 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-[0_-4px_12px_rgba(227,24,55,0.08)]">
+<div class="flex justify-around items-center h-20 pb-safe px-4">
+<div class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 transition-all duration-300 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 transition-all duration-300 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined">search</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold">Find</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#E31837] dark:text-red-500 transition-all duration-300 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 transition-all duration-300 active:scale-90 cursor-pointer">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[10px] font-semibold">Favorites</span>
+</div>
+</div>
+</nav>
+</body></html>

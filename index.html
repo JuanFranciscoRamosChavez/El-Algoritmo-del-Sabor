@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Algoritmo del Sabor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top, rgba(253, 129, 0, 0.18), transparent 34%),
+                linear-gradient(180deg, #fff8f5 0%, #fff 40%, #f3f4f6 100%);
+        }
+
+        .glass-card {
+            backdrop-filter: blur(18px);
+            background: rgba(255, 255, 255, 0.86);
+            box-shadow: 0 24px 70px rgba(185, 0, 39, 0.12);
+        }
+
+        .hover-lift {
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 34px rgba(185, 0, 39, 0.16);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-900">
+    <main class="min-h-screen px-4 py-8 sm:py-12">
+        <div class="mx-auto max-w-6xl">
+            <section class="glass-card rounded-[2rem] border border-white/70 overflow-hidden">
+                <div class="bg-gradient-to-r from-red-700 via-red-600 to-orange-500 px-6 py-10 sm:px-10 sm:py-14 text-white">
+                    <div class="max-w-3xl">
+                        <p class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1 text-sm font-semibold text-white/90">🌮 El Algoritmo del Sabor</p>
+                        <h1 class="mt-5 text-4xl font-black tracking-tight sm:text-6xl">Tu taquería digital, lista para GitHub y Vercel.</h1>
+                        <p class="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">Explora la interfaz móvil, revisa la documentación y abre el preview interactivo desde una sola entrada.</p>
+                    </div>
+                </div>
+
+                <div class="grid gap-6 p-6 sm:p-10 lg:grid-cols-[1.3fr_0.9fr]">
+                    <div class="space-y-6">
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <a class="hover-lift rounded-2xl border border-slate-200 bg-white p-5" href="PREVIEW.html">
+                                <div class="text-3xl">👁️</div>
+                                <h2 class="mt-4 text-xl font-bold">Abrir Preview</h2>
+                                <p class="mt-2 text-sm leading-6 text-slate-600">Demo interactiva para probar el flujo completo en el navegador.</p>
+                            </a>
+                            <a class="hover-lift rounded-2xl border border-slate-200 bg-white p-5" href="INDEX.html">
+                                <div class="text-3xl">📚</div>
+                                <h2 class="mt-4 text-xl font-bold">Ver documentación</h2>
+                                <p class="mt-2 text-sm leading-6 text-slate-600">Accede al índice con enlaces a guías, código y configuración.</p>
+                            </a>
+                        </div>
+
+                        <div class="rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-200">
+                            <h2 class="text-2xl font-bold">Checklist de publicación</h2>
+                            <ul class="mt-4 space-y-3 text-sm text-slate-700">
+                                <li>✅ `index.html` en raíz para Vercel y GitHub Pages</li>
+                                <li>✅ `.gitignore` para ignorar `node_modules/` y `dist/`</li>
+                                <li>✅ `npm run build` validado con éxito</li>
+                                <li>✅ Preview interactivo disponible desde un clic</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <aside class="rounded-2xl bg-[#fff8f5] p-6 ring-1 ring-orange-100">
+                        <h2 class="text-2xl font-bold text-slate-900">Acceso rápido</h2>
+                        <p class="mt-2 text-sm leading-6 text-slate-600">Desde aquí puedes abrir los recursos más útiles del proyecto sin perder el contexto.</p>
+
+                        <div class="mt-6 space-y-3">
+                            <a href="README.md" class="block rounded-xl bg-white px-4 py-3 font-semibold text-red-700 ring-1 ring-red-100 hover:bg-red-50">README.md</a>
+                            <a href="DESPLIEGUE.md" class="block rounded-xl bg-white px-4 py-3 font-semibold text-red-700 ring-1 ring-red-100 hover:bg-red-50">DESPLIEGUE.md</a>
+                            <a href="TESTING.md" class="block rounded-xl bg-white px-4 py-3 font-semibold text-red-700 ring-1 ring-red-100 hover:bg-red-50">TESTING.md</a>
+                            <a href="DJANGO_BACKEND.md" class="block rounded-xl bg-white px-4 py-3 font-semibold text-red-700 ring-1 ring-red-100 hover:bg-red-50">DJANGO_BACKEND.md</a>
+                        </div>
+
+                        <div class="mt-8 rounded-2xl bg-gradient-to-br from-red-700 to-orange-500 p-5 text-white">
+                            <p class="text-sm uppercase tracking-[0.2em] text-white/80">Estado</p>
+                            <p class="mt-2 text-lg font-bold">Listo para subir al repositorio.</p>
+                            <p class="mt-2 text-sm leading-6 text-white/85">Sube esta carpeta a GitHub y conecta el repo a Vercel para publicar el sitio.</p>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
