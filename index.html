@@ -31,6 +31,18 @@
             transform: translateY(-4px);
             box-shadow: 0 18px 34px rgba(185, 0, 39, 0.16);
         }
+
+        .preview-shell {
+            box-shadow: 0 30px 80px rgba(15, 23, 42, 0.12);
+        }
+
+        .preview-frame {
+            aspect-ratio: 9 / 16;
+            border: 10px solid #111827;
+            border-radius: 2rem;
+            overflow: hidden;
+            background: white;
+        }
     </style>
 </head>
 <body class="min-h-screen text-slate-900">
@@ -41,53 +53,46 @@
                     <div class="max-w-3xl">
                         <p class="inline-flex items-center gap-2 rounded-full bg-white/15 px-4 py-1 text-sm font-semibold text-white/90">🌮 El Algoritmo del Sabor</p>
                         <h1 class="mt-5 text-4xl font-black tracking-tight sm:text-6xl">Tu taquería digital, lista para GitHub y Vercel.</h1>
-                        <p class="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">Explora la interfaz móvil, revisa la documentación y abre el preview interactivo desde una sola entrada.</p>
+                        <p class="mt-4 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">Ya puedes ver la experiencia principal aquí mismo, con acceso directo al preview interactivo de la app.</p>
                     </div>
                 </div>
 
-                <div class="grid gap-6 p-6 sm:p-10 lg:grid-cols-[1.3fr_0.9fr]">
+                <div class="grid gap-6 p-6 sm:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
                     <div class="space-y-6">
-                        <div class="grid gap-4 sm:grid-cols-2">
-                            <a class="hover-lift rounded-2xl border border-slate-200 bg-white p-5" href="PREVIEW.html">
-                                <div class="text-3xl">👁️</div>
-                                <h2 class="mt-4 text-xl font-bold">Abrir Preview</h2>
-                                <p class="mt-2 text-sm leading-6 text-slate-600">Demo interactiva para probar el flujo completo en el navegador.</p>
-                            </a>
-                            <a class="hover-lift rounded-2xl border border-slate-200 bg-white p-5" href="INDEX.html">
-                                <div class="text-3xl">📚</div>
-                                <h2 class="mt-4 text-xl font-bold">Ver documentación</h2>
-                                <p class="mt-2 text-sm leading-6 text-slate-600">Accede al índice con enlaces a guías, código y configuración.</p>
-                            </a>
+                        <div class="rounded-[1.75rem] bg-white/80 p-6 ring-1 ring-slate-200">
+                            <h2 class="text-2xl font-bold">La experiencia principal ya vive aquí</h2>
+                            <p class="mt-3 max-w-xl text-sm leading-6 text-slate-600">La portada ahora muestra el producto, no una lista de documentos. Desde esta pantalla puedes entrar al preview interactivo y revisar el flujo de la app.</p>
+
+                            <div class="mt-5 flex flex-wrap gap-3">
+                                <a href="PREVIEW.html" class="inline-flex items-center justify-center rounded-full bg-red-700 px-5 py-3 text-sm font-semibold text-white hover:bg-red-800">Abrir preview interactivo</a>
+                                <a href="#preview" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50">Ver la vista principal</a>
+                            </div>
                         </div>
 
-                        <div class="rounded-2xl bg-slate-50 p-6 ring-1 ring-slate-200">
-                            <h2 class="text-2xl font-bold">Checklist de publicación</h2>
-                            <ul class="mt-4 space-y-3 text-sm text-slate-700">
-                                <li>✅ `index.html` en raíz para Vercel y GitHub Pages</li>
-                                <li>✅ `.gitignore` para ignorar `node_modules/` y `dist/`</li>
-                                <li>✅ `npm run build` validado con éxito</li>
-                                <li>✅ Preview interactivo disponible desde un clic</li>
-                            </ul>
+                        <div class="grid gap-4 sm:grid-cols-3">
+                            <div class="hover-lift rounded-2xl bg-white p-5 ring-1 ring-slate-200">
+                                <div class="text-2xl">📱</div>
+                                <h3 class="mt-3 font-bold">Mobile-first</h3>
+                                <p class="mt-2 text-sm leading-6 text-slate-600">Diseño pensado para verse bien en pantalla de teléfono.</p>
+                            </div>
+                            <div class="hover-lift rounded-2xl bg-white p-5 ring-1 ring-slate-200">
+                                <div class="text-2xl">⚡</div>
+                                <h3 class="mt-3 font-bold">Rápido</h3>
+                                <p class="mt-2 text-sm leading-6 text-slate-600">Build simple con Vite y despliegue directo en Vercel.</p>
+                            </div>
+                            <div class="hover-lift rounded-2xl bg-white p-5 ring-1 ring-slate-200">
+                                <div class="text-2xl">🌮</div>
+                                <h3 class="mt-3 font-bold">Taco flow</h3>
+                                <p class="mt-2 text-sm leading-6 text-slate-600">Inicio, quiz, carga y resultado dentro de la misma experiencia.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <aside class="rounded-2xl bg-[#fff8f5] p-6 ring-1 ring-orange-100">
-                        <h2 class="text-2xl font-bold text-slate-900">Acceso rápido</h2>
-                        <p class="mt-2 text-sm leading-6 text-slate-600">Desde aquí puedes abrir los recursos más útiles del proyecto sin perder el contexto.</p>
-
-                        <div class="mt-6 space-y-3">
-                            <a href="README.md" class="block rounded-xl bg-white px-4 py-3 font-semibold text-red-700 ring-1 ring-red-100 hover:bg-red-50">README.md</a>
-                            <a href="DESPLIEGUE.md" class="block rounded-xl bg-white px-4 py-3 font-semibold text-red-700 ring-1 ring-red-100 hover:bg-red-50">DESPLIEGUE.md</a>
-                            <a href="TESTING.md" class="block rounded-xl bg-white px-4 py-3 font-semibold text-red-700 ring-1 ring-red-100 hover:bg-red-50">TESTING.md</a>
-                            <a href="DJANGO_BACKEND.md" class="block rounded-xl bg-white px-4 py-3 font-semibold text-red-700 ring-1 ring-red-100 hover:bg-red-50">DJANGO_BACKEND.md</a>
+                    <div id="preview" class="preview-shell rounded-[2rem] bg-slate-900/5 p-4 sm:p-5">
+                        <div class="preview-frame">
+                            <iframe title="Preview de El Algoritmo del Sabor" src="PREVIEW.html" class="h-full w-full border-0" loading="lazy"></iframe>
                         </div>
-
-                        <div class="mt-8 rounded-2xl bg-gradient-to-br from-red-700 to-orange-500 p-5 text-white">
-                            <p class="text-sm uppercase tracking-[0.2em] text-white/80">Estado</p>
-                            <p class="mt-2 text-lg font-bold">Listo para subir al repositorio.</p>
-                            <p class="mt-2 text-sm leading-6 text-white/85">Sube esta carpeta a GitHub y conecta el repo a Vercel para publicar el sitio.</p>
-                        </div>
-                    </aside>
+                    </div>
                 </div>
             </section>
         </div>
