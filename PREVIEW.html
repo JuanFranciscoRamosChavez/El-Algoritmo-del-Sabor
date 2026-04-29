@@ -10,19 +10,52 @@
         * {
             font-family: 'Be Vietnam Pro', 'Plus Jakarta Sans', sans-serif;
         }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
         
         body {
             background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .preview-stage {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .phone-container {
-            width: 375px;
-            height: 812px;
+            width: min(375px, calc(100vw - 32px));
+            aspect-ratio: 375 / 812;
+            height: auto;
             border: 12px solid #1f2937;
             border-radius: 40px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             position: relative;
+            background: white;
+        }
+
+        @media (max-height: 860px) {
+            .phone-container {
+                transform: scale(0.92);
+                transform-origin: center top;
+            }
+        }
+
+        @media (max-height: 760px) {
+            .phone-container {
+                transform: scale(0.82);
+                transform-origin: center top;
+            }
         }
 
         .phone-container::before {
@@ -486,9 +519,7 @@
 </head>
 <body>
 
-<body>
-
-<div class="flex items-center justify-center min-h-screen">
+<div class="preview-stage">
     <div class="phone-container">
         <div class="phone-screen">
 
