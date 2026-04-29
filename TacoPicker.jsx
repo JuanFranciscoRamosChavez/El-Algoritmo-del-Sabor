@@ -112,7 +112,7 @@ const TacoPicker = () => {
           <div className="mb-8 text-6xl animate-bounce">🌮</div>
 
           <h1 className="text-headline-xl text-white mb-4 font-bold">
-            El Algoritmo del Sabor
+            Escuadrón Suadero: Tu taquería digital.
           </h1>
 
           <p className="text-body-lg text-white mb-2 opacity-90">
