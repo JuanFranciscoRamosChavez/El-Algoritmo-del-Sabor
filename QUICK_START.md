@@ -1,222 +1,34 @@
-# ⚡ Quick Start & Troubleshooting
+# Quick Start
 
-## 🚀 Instalación en 5 Minutos
+## Ver la app
 
-### Paso 1: Clonar y Setup Frontend
+1. Abre [PREVIEW.html](PREVIEW.html) en tu navegador.
+2. Usa la demo interactiva para probar el flujo de la taquería.
+
+## Levantar el proyecto localmente
 
 ```bash
-# Ir a la carpeta del proyecto
-cd "Algoritmo de sabor"
-
-# Instalar dependencias
 npm install
-
-# Copiar variables de entorno
-cp .env.example .env.local
-
-# Iniciar servidor de desarrollo
 npm run dev
 ```
 
-✅ Frontend listo en: `http://localhost:5173`
-
----
-
-### Paso 2: Setup Django Backend
+## Generar build
 
 ```bash
-# Crear carpeta para Django (una sola vez)
-mkdir django_backend
-cd django_backend
-
-# Crear y activar virtual environment
-python -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
-
-# Crear requirements.txt
-cat > requirements.txt << EOF
-Django==4.2.0
-djangorestframework==3.14.0
-django-cors-headers==4.0.0
-gunicorn==20.1.0
-psycopg2-binary==2.9.6
-python-dotenv==1.0.0
-EOF
-
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Crear proyecto Django
-django-admin startproject config .
-django-admin startapp tacos
-
-# Crear .env
-cat > .env << EOF
-SECRET_KEY=django-insecure-ejemplo-key-cambiar-en-produccion
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-DB_ENGINE=django.db.backends.sqlite3
-DB_NAME=db.sqlite3
-CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
-EOF
+npm run build
 ```
 
-✅ Backend ready en: `http://localhost:8000`
+## Qué esperar
 
----
+- `npm run dev` levanta el entorno local con Vite.
+- `npm run build` genera `dist/`.
+- El repositorio no incluye backend Django ejecutable.
 
-## 🔧 Configuración Rápida
+## Problemas comunes
 
-### Django settings.py
-
-```python
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'corsheaders',
-    'rest_framework',
-    'tacos',
-]
-
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
-```
-
----
-
-## 📱 Vista Previa Interactiva
-
-Abre `PREVIEW.html` en tu navegador para ver una demostración interactiva de la interfaz sin necesidad de instalar nada.
-
-```bash
-# En Windows
-start PREVIEW.html
-
-# En Mac
-open PREVIEW.html
-
-# En Linux
-xdg-open PREVIEW.html
-```
-
----
-
-## 🐛 Troubleshooting
-
-### ❌ Error: CORS policy blocked
-
-**Problema:** En browser: `Access to XMLHttpRequest at 'http://localhost:8000...' has been blocked by CORS policy`
-
-**Solución:**
-```python
-# Django settings.py
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Verifica puerto correcto
-    "http://127.0.0.1:5173",
-]
-
-# Reinicia Django
-python manage.py runserver
-```
-
----
-
-### ❌ Error: Module not found
-
-**Problema:** `ModuleNotFoundError: No module named 'react'`
-
-**Solución:**
-```bash
-# Instala dependencias correctamente
-npm install
-
-# Limpia cache
-rm -rf node_modules
-npm install
-```
-
----
-
-### ❌ Error: Port already in use
-
-**Problema:** `Port 5173 is already in use`
-
-**Solución:**
-```bash
-# Opción 1: Matar proceso en el puerto
-# Windows
-netstat -ano | findstr :5173
-taskkill /PID <PID> /F
-
-# Mac/Linux
-lsof -i :5173
-kill -9 <PID>
-
-# Opción 2: Usar otro puerto
-npm run dev -- --port 5174
-```
-
----
-
-### ❌ Error: npm command not found
-
-**Problema:** `npm: command not found`
-
-**Solución:** Instala Node.js desde https://nodejs.org
-
-```bash
-# Verifica instalación
-node --version
-npm --version
-```
-
----
-
-### ❌ Error: Django migrations failed
-
-**Problema:** `No such table: tacos_taco`
-
-**Solución:**
-```bash
-# Crea migraciones
-python manage.py makemigrations
-
-# Aplica migraciones
-python manage.py migrate
-
-# Verifica
-python manage.py showmigrations
-```
-
----
-
-### ❌ Error: venv activation failed
-
-**Problema:** `venv\Scripts\activate: No such file or directory`
-
-**Solución:**
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
+- Si el build falla, revisa que Node.js y npm estén instalados.
+- Si `PREVIEW.html` no carga bien, ábrelo con un navegador moderno.
+- Si Vercel no detecta la app, confirma que la salida del build sea `dist`.
 
 # Mac/Linux
 python3 -m venv venv

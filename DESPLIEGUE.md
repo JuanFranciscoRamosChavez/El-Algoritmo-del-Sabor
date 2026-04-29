@@ -2,361 +2,49 @@
 
 ## Frontend - El Algoritmo del Sabor
 
-### Opciones de Hosting
+# Guía de Despliegue
 
-#### 1️⃣ **Vercel** (Recomendado para Next.js/Vite)
+## Opción recomendada: Vercel
 
-```bash
-# Instalación de Vercel CLI
-npm i -g vercel
+Este repositorio está preparado para publicarse como sitio estático en Vercel.
 
-# Deploy
-vercel
+### Pasos
 
-# Setup automático
-# - Conecta tu repositorio GitHub
-# - Configura variables de entorno en Vercel Dashboard
-# - Deploy automático en cada push a main
+1. Sube el proyecto a GitHub.
+2. En Vercel, importa el repositorio.
+3. Confirma estos valores:
+   - Framework Preset: Vite
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+4. Despliega.
+
+### Variables de entorno
+
+Si en el futuro conectas un backend externo, agrega:
+
+```env
+VITE_API_URL=https://tu-backend-ejemplo.com
 ```
 
-**Configuración en Vercel Dashboard:**
-- Environment: `VITE_API_URL=https://api.tudominio.com`
-- Framework: Vite
-- Build Command: `npm run build`
-- Output Directory: `dist`
-
-#### 2️⃣ **Netlify**
+## Opción local para revisar el build
 
 ```bash
-# Instalación de Netlify CLI
-npm i -g netlify-cli
-
-# Deploy
-netlify deploy --prod
-
-# Conectar repositorio
-netlify connect
-```
-
-**netlify.toml:**
-```toml
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-[dev]
-  command = "npm run dev"
-  port = 3000
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[[env.production]]
-  VITE_API_URL = "https://api.tudominio.com"
-
-[[env.preview]]
-  VITE_API_URL = "https://api-preview.tudominio.com"
-```
-
-#### 3️⃣ **AWS S3 + CloudFront**
-
-```bash
-# 1. Crear bucket S3
-aws s3 mb s3://el-algoritmo-del-sabor
-
-# 2. Construir
+npm install
 npm run build
-
-# 3. Subir archivos
-aws s3 sync dist/ s3://el-algoritmo-del-sabor --delete
-
-# 4. Invalidar CloudFront
-aws cloudfront create-invalidation --distribution-id E123ABC --paths "/*"
 ```
 
-**Política de Bucket S3:**
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicReadGetObject",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::el-algoritmo-del-sabor/*"
-    }
-  ]
-}
-```
+El resultado se genera en `dist/`.
 
-#### 4️⃣ **Cloudflare Pages**
+## Qué no forma parte de este repo
 
-```bash
-# Crear wrangler.toml
-name = "el-algoritmo-del-sabor"
-type = "javascript"
-account_id = "tu_account_id"
-workers_dev = true
-route = "tudominio.com/*"
-zone_id = "tu_zone_id"
+- No hay backend Django dentro de esta carpeta.
+- No hay configuración de producción para Heroku, Railway o EC2 incluida aquí.
+- No se requiere `vercel.json` para el despliegue básico.
 
-[env.production]
-route = "https://tudominio.com/*"
-zone_id = "tu_zone_id"
+## Problemas comunes
 
-# Deploy
-npm run build
-npx wrangler deploy
-```
-
----
-
-## Backend - Django REST Framework
-
-### Opciones de Hosting
-
-#### 1️⃣ **Heroku** (Más fácil, pero con cambios recientes)
-
-**Procfile:**
-```
-web: gunicorn config.wsgi --log-file -
-release: python manage.py migrate
-```
-
-**requirements.txt:**
-```
-Django==4.2.0
-djangorestframework==3.14.0
-django-cors-headers==4.0.0
-gunicorn==20.1.0
-psycopg2-binary==2.9.6
-python-dotenv==1.0.0
-```
-
-```bash
-# Deploy
-git push heroku main
-
-# Migraciones
-heroku run python manage.py migrate
-
-# Crear superusuario
-heroku run python manage.py createsuperuser
-
-# Ver logs
-heroku logs --tail
-```
-
-#### 2️⃣ **Railway**
-
-```bash
-# Instalar CLI
-npm i -g @railway/cli
-
-# Login
-railway login
-
-# Deploy
-railway up
-
-# Variables de entorno en Railway Dashboard:
-# DATABASE_URL (automático con PostgreSQL)
-# SECRET_KEY
-# DEBUG=False
-# ALLOWED_HOSTS=tuapp.railway.app
-# CORS_ALLOWED_ORIGINS=https://tudominio.com
-```
-
-#### 3️⃣ **DigitalOcean App Platform**
-
-**app.yaml:**
-```yaml
-name: el-algoritmo-del-sabor
-services:
-- name: web
-  github:
-    branch: main
-    repo: tu_usuario/tu_repo
-  build_command: pip install -r requirements.txt && python manage.py migrate
-  run_command: gunicorn config.wsgi:application
-  http_port: 8080
-  envs:
-  - key: SECRET_KEY
-    scope: RUN_AND_BUILD_TIME
-    value: ${SECRET_KEY}
-  - key: DEBUG
-    value: "False"
-  - key: ALLOWED_HOSTS
-    value: tuapp.ondigitalocean.app
-  health_check:
-    http_path: /api/health/
-
-databases:
-- name: db
-  engine: PG
-  version: "14"
-```
-
-#### 4️⃣ **AWS EC2 con Gunicorn + Nginx**
-
-```bash
-# En tu instancia EC2:
-
-# 1. Actualizar sistema
-sudo apt update && sudo apt upgrade -y
-
-# 2. Instalar dependencias
-sudo apt install python3-pip python3-venv postgresql postgresql-contrib nginx -y
-
-# 3. Clonar repositorio
-git clone https://github.com/tu_usuario/tu_repo.git
-cd tu_repo
-
-# 4. Crear virtualenv
-python3 -m venv venv
-source venv/bin/activate
-
-# 5. Instalar dependencias
-pip install -r requirements.txt
-
-# 6. Crear .env
-echo "SECRET_KEY=$(python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())')" > .env
-echo "DEBUG=False" >> .env
-echo "ALLOWED_HOSTS=tudominio.com" >> .env
-
-# 7. Migraciones
-python manage.py migrate
-python manage.py collectstatic --noinput
-
-# 8. Crear usuario superusuario
-python manage.py createsuperuser
-
-# 9. Configurar Gunicorn (systemd service)
-sudo nano /etc/systemd/system/gunicorn.service
-```
-
-**gunicorn.service:**
-```ini
-[Unit]
-Description=Gunicorn daemon for El Algoritmo del Sabor
-After=network.target
-
-[Service]
-User=ubuntu
-Group=ubuntu
-WorkingDirectory=/home/ubuntu/tu_repo
-ExecStart=/home/ubuntu/tu_repo/venv/bin/gunicorn \
-          --workers 4 \
-          --bind unix:/run/gunicorn.sock \
-          config.wsgi:application
-
-[Install]
-WantedBy=multi-user.target
-```
-
-```bash
-# Habilitar servicio
-sudo systemctl enable gunicorn
-sudo systemctl start gunicorn
-
-# Configurar Nginx
-sudo nano /etc/nginx/sites-available/default
-```
-
-**Nginx config:**
-```nginx
-server {
-    listen 80;
-    server_name tudominio.com;
-    client_max_body_size 20M;
-
-    location = /favicon.ico { 
-        access_log off; 
-        log_not_found off; 
-    }
-
-    location /static/ {
-        root /home/ubuntu/tu_repo;
-    }
-
-    location /media/ {
-        root /home/ubuntu/tu_repo;
-    }
-
-    location / {
-        include proxy_params;
-        proxy_pass http://unix:/run/gunicorn.sock;
-    }
-}
-```
-
-```bash
-# Habilitar Nginx
-sudo systemctl restart nginx
-
-# SSL con Let's Encrypt
-sudo apt install certbot python3-certbot-nginx -y
-sudo certbot --nginx -d tudominio.com
-```
-
-#### 5️⃣ **Docker + Docker Compose**
-
-**Dockerfile:**
-```dockerfile
-FROM python:3.11-slim
-
-WORKDIR /app
-
-# Instalar dependencias del sistema
-RUN apt-get update && apt-get install -y \
-    postgresql-client \
-    && rm -rf /var/lib/apt/lists/*
-
-# Instalar dependencias Python
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copiar código
-COPY . .
-
-# Crear usuario no-root
-RUN useradd -m appuser && chown -R appuser:appuser /app
-USER appuser
-
-# Colectar archivos estáticos
-RUN python manage.py collectstatic --noinput
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/api/health/')"
-
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi:application"]
-```
-
-**docker-compose.yml:**
-```yaml
-version: '3.8'
-
-services:
-  db:
-    image: postgres:15-alpine
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-  web:
-    build: .
+- Si Vercel falla, revisa que el proyecto esté usando [index.html](index.html) como entrada en la raíz.
+- Si necesitas un API real, apunta `VITE_API_URL` al backend que despliegues por separado.
     command: >
       sh -c "python manage.py migrate &&
              python manage.py collectstatic --noinput &&
