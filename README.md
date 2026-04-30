@@ -58,3 +58,4 @@ Si prefieres revisar la demo sin levantar el entorno de desarrollo, abre [PREVIE
 
 - La documentación técnica completa está en [DOCUMENTACION.md](DOCUMENTACION.md).
 - La guía de despliegue está en [DESPLIEGUE.md](DESPLIEGUE.md).
+# El-Algoritmo-del-Sabor
