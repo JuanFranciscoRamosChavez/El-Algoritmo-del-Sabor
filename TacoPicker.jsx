@@ -107,15 +107,15 @@ const TacoPicker = () => {
   // ==================== PANTALLA DE INICIO ====================
   if (screen === 'home') {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6" style={{ background: 'linear-gradient(135deg, #b90027 0%, #fd8100 100%)' }}>
-        <div className="text-center max-w-md">
-          <div className="mb-8 text-6xl animate-bounce">🌮</div>
+      <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-8" style={{ background: 'linear-gradient(135deg, #b90027 0%, #fd8100 100%)' }}>
+        <div className="text-center w-full max-w-md sm:max-w-lg">
+          <div className="mb-6 sm:mb-8 text-5xl sm:text-6xl animate-bounce">🌮</div>
 
-          <h1 className="text-headline-xl text-white mb-4 font-bold">
+          <h1 className="text-[clamp(1.9rem,5.5vw,2.6rem)] leading-tight text-white mb-4 font-bold">
             Escuadrón Suadero: Tu taquería digital.
           </h1>
 
-          <p className="text-body-lg text-white mb-2 opacity-90">
+          <p className="text-base sm:text-lg text-white mb-2 opacity-90">
             Déjate guiar por la ciencia del sabor y encuentra tu taco perfecto.
           </p>
 
@@ -131,7 +131,7 @@ const TacoPicker = () => {
 
           <button
             onClick={() => setScreen('quiz')}
-            className="w-full bg-white text-primary hover:bg-surface-container-high transition-all duration-300 font-label-bold text-label-bold py-4 px-6 rounded-full shadow-lg active:scale-95"
+            className="w-full bg-white text-primary hover:bg-surface-container-high transition-all duration-300 font-label-bold text-label-bold text-sm sm:text-base py-3.5 sm:py-4 px-5 sm:px-6 rounded-full shadow-lg active:scale-95"
           >
             🎯 Descubrir mi taco ideal
           </button>
@@ -153,8 +153,8 @@ const TacoPicker = () => {
     return (
       <div className="min-h-screen bg-surface flex flex-col" style={{ paddingTop: 'max(env(safe-area-inset-top), 1rem)' }}>
         {/* Header con progreso */}
-        <div className="sticky top-0 bg-white shadow-sm z-10 p-6">
-          <div className="max-w-md mx-auto">
+        <div className="sticky top-0 bg-white shadow-sm z-10 px-4 py-4 sm:p-6">
+          <div className="max-w-md sm:max-w-xl mx-auto">
             <div className="flex items-center justify-between mb-4">
               <span className="text-label-bold text-on-surface">
                 Pregunta {currentStep + 1} de {quizSteps.length}
@@ -176,39 +176,39 @@ const TacoPicker = () => {
         </div>
 
         {/* Contenido principal */}
-        <div className="flex-1 flex items-center justify-center p-6 pb-24">
-          <div className="max-w-md w-full">
+        <div className="flex-1 flex items-center justify-center p-4 sm:p-6 pb-20 sm:pb-24">
+          <div className="max-w-md sm:max-w-xl w-full">
             {/* Tarjeta animada */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-lg">
               {/* Ícono del paso */}
-              <div className="text-6xl mb-6 text-center">
+              <div className="text-5xl sm:text-6xl mb-5 sm:mb-6 text-center">
                 {currentStep === 0 ? '🌶️' : currentStep === 1 ? '🍖' : '👍'}
               </div>
 
               {/* Título de la pregunta */}
-              <h2 className="text-headline-md text-on-surface text-center mb-8 font-bold">
+              <h2 className="text-xl sm:text-2xl text-on-surface text-center mb-6 sm:mb-8 font-bold leading-tight">
                 {currentQuestion.title}
               </h2>
 
               {/* Opciones */}
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                 {currentQuestion.options.map((option) => (
                   <button
                     key={option.value}
                     onClick={() => handleOptionSelect(currentQuestion.id, option.value)}
-                    className={`w-full p-5 rounded-xl font-label-bold text-label-bold transition-all duration-300 border-2 ${
+                    className={`w-full p-4 sm:p-5 rounded-xl font-label-bold text-label-bold transition-all duration-300 border-2 ${
                       answers[currentQuestion.id] === option.value
                         ? 'border-primary bg-primary-container text-on-primary-container shadow-md scale-105'
                         : 'border-outline-variant bg-surface-container hover:border-primary'
                     } active:scale-95`}
                   >
-                    <div className="text-lg">{option.label}</div>
+                    <div className="text-base sm:text-lg">{option.label}</div>
                   </button>
                 ))}
               </div>
 
               {/* Indicadores de selección */}
-              <div className="flex justify-center gap-2 mb-8">
+              <div className="flex justify-center gap-2 mb-6 sm:mb-8">
                 {quizSteps.map((step, idx) => (
                   <div
                     key={idx}
@@ -222,11 +222,11 @@ const TacoPicker = () => {
               </div>
 
               {/* Botones de navegación */}
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 {currentStep > 0 && (
                   <button
                     onClick={goToPreviousStep}
-                    className="flex-1 py-4 px-4 rounded-full border-2 border-outline font-label-bold text-on-surface hover:bg-surface-container transition-all active:scale-95"
+                    className="w-full sm:flex-1 py-3.5 sm:py-4 px-4 rounded-full border-2 border-outline font-label-bold text-on-surface hover:bg-surface-container transition-all active:scale-95"
                   >
                     ← Atrás
                   </button>
@@ -235,7 +235,7 @@ const TacoPicker = () => {
                 <button
                   onClick={goToNextStep}
                   disabled={!isAnswered}
-                  className={`flex-1 py-4 px-4 rounded-full font-label-bold transition-all ${
+                  className={`w-full sm:flex-1 py-3.5 sm:py-4 px-4 rounded-full font-label-bold transition-all ${
                     isAnswered
                       ? 'bg-gradient-to-r from-primary to-secondary-container text-on-primary hover:shadow-lg active:scale-95'
                       : 'bg-outline-variant text-on-surface opacity-50 cursor-not-allowed'
@@ -254,15 +254,15 @@ const TacoPicker = () => {
   // ==================== PANTALLA DE CARGA ====================
   if (screen === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-surface">
-        <div className="text-center max-w-md">
-          <div className="mb-8">
+      <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 bg-surface">
+        <div className="text-center max-w-md w-full">
+          <div className="mb-6 sm:mb-8">
             <div className="inline-block">
               <div className="w-16 h-16 border-4 border-outline-variant rounded-full border-t-primary animate-spin" />
             </div>
           </div>
 
-          <h2 className="text-headline-md text-on-surface mb-2 font-bold">
+          <h2 className="text-xl sm:text-2xl text-on-surface mb-2 font-bold">
             Analizando tu sabor...
           </h2>
 
@@ -290,27 +290,27 @@ const TacoPicker = () => {
     return (
       <div className="min-h-screen bg-gradient-to-b from-primary-container to-surface flex flex-col" style={{ paddingTop: 'max(env(safe-area-inset-top), 1rem)' }}>
         {/* Header */}
-        <div className="p-6 text-center">
-          <h1 className="text-headline-lg text-on-primary-container font-bold">
+        <div className="p-4 sm:p-6 text-center">
+          <h1 className="text-2xl sm:text-3xl text-on-primary-container font-bold">
             ¡Lo encontramos!
           </h1>
         </div>
 
         {/* Contenido principal */}
-        <div className="flex-1 flex items-center justify-center p-6 pb-24">
-          <div className="max-w-md w-full">
+        <div className="flex-1 flex items-center justify-center p-4 sm:p-6 pb-20 sm:pb-24">
+          <div className="max-w-md sm:max-w-xl w-full">
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               {/* Imagen del taco */}
-              <div className="bg-gradient-to-b from-secondary-container to-secondary p-12 text-center">
-                <div className="text-8xl mb-4 inline-block animate-bounce">
+              <div className="bg-gradient-to-b from-secondary-container to-secondary p-8 sm:p-12 text-center">
+                <div className="text-7xl sm:text-8xl mb-3 sm:mb-4 inline-block animate-bounce">
                   🌮
                 </div>
               </div>
 
               {/* Contenido */}
-              <div className="p-8">
+              <div className="p-5 sm:p-8">
                 {/* Nombre del taco */}
-                <h2 className="text-headline-lg text-on-surface mb-2 font-bold text-center">
+                <h2 className="text-2xl sm:text-3xl text-on-surface mb-2 font-bold text-center leading-tight">
                   {result.name}
                 </h2>
 
@@ -320,7 +320,7 @@ const TacoPicker = () => {
                 </p>
 
                 {/* Detalles */}
-                <div className="grid grid-cols-3 gap-4 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8">
                   <div className="text-center">
                     <div className="text-3xl mb-1">
                       {result.spiciness === 'hot' ? '🔴' : result.spiciness === 'medium' ? '🟡' : '🟢'}

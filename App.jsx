@@ -4,7 +4,7 @@ import TacoPicker from './TacoPicker';
 
 export default function App() {
   return (
-    <div className="w-screen max-w-full overflow-hidden">
+    <div className="min-h-screen w-full overflow-x-hidden">
       <TacoPicker />
     </div>
   );
